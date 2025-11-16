@@ -1,10 +1,10 @@
-Excellent — now we’re in the serious engineering territory: tuning a small model (LLaMA 3 3B) into a credible **institutional credit risk analyst** using LoRA (Low-Rank Adaptation).
+Tuning a small model (LLaMA 3 3B) into a credible **institutional credit risk analyst** using LoRA (Low-Rank Adaptation).
 
 Let’s go step-by-step, balancing **compute efficiency**, **domain alignment**, and **response quality** — the three pillars that determine whether your fine-tuned model will actually outperform the base one on real portfolio analysis tasks.
 
 ---
 
-## 🧠 1. Target setup
+## 1. Target setup
 
 **Base model:** `Llama-3.2-3B-Instruct`
 **Method:** LoRA / QLoRA (for GPU memory efficiency)
@@ -12,7 +12,7 @@ Let’s go step-by-step, balancing **compute efficiency**, **domain alignment**,
 
 ---
 
-## ⚙️ 2. Recommended hyperparameters
+## 2. Recommended hyperparameters
 
 | Parameter                | Recommended                                       | Notes                                                                                   |
 | ------------------------ | ------------------------------------------------- | --------------------------------------------------------------------------------------- |
@@ -32,7 +32,7 @@ Let’s go step-by-step, balancing **compute efficiency**, **domain alignment**,
 
 ---
 
-## 📊 3. Dataset size & composition
+## 3. Dataset size & composition
 
 Think of this like training a small analyst, not a data vacuum:
 
@@ -51,7 +51,7 @@ You can mix in a **“core reasoning corpus”** (≈ 10%) of public financial c
 
 ---
 
-## 🧩 4. Quality boosters beyond SFT
+## 4. Quality boosters beyond SFT
 
 ### a. **Instruction consistency**
 
@@ -86,7 +86,7 @@ If you want conversational stability:
 
 ---
 
-## 🖥️ 5. Hardware planning (approximate)
+## 5. Hardware planning (approximate)
 
 | Setup             | GPU              | VRAM                                         | Method |
 | ----------------- | ---------------- | -------------------------------------------- | ------ |
@@ -96,7 +96,7 @@ If you want conversational stability:
 
 ---
 
-## 🚀 6. Expected performance curve
+## 6. Expected performance curve
 
 * **After 1 epoch:** starts using financial vocabulary, still generic.
 * **After 3 epochs:** produces structured reasoning with credible numbers.
@@ -105,7 +105,7 @@ If you want conversational stability:
 
 ---
 
-## 🧭 7. Final refinement ideas
+## 7. Final refinement ideas
 
 1. **Domain adapters:** keep LoRA adapters modular per sector (corporate, sovereign, structured) — you can swap them in production.
 2. **Temperature tuning:** during inference, set temperature ≈ 0.4–0.6 for analytical consistency.
@@ -119,5 +119,3 @@ Start with **5 k high-quality samples**, LoRA r = 32, learning rate = 2e-4, 3 ep
 That configuration should yield a domain-adapted 3B model capable of generating **plausible, metrics-driven credit-risk commentary** nearly indistinguishable from human analysts.
 
 ---
-
-If you’d like, I can draft a **training configuration template** (in Hugging Face PEFT + Transformers syntax) ready to drop into your pipeline — tuned for this exact SFT setup. Would you want that next?
